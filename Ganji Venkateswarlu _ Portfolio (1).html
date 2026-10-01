@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ganji Venkateswarlu | ML & Computer Vision Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EDF1F5;--panel:#FFFFFF;--ink:#142033;--muted:#55627A;--line:#CBD4E0;--blue:#2457F5;--pink:#C42A78;--teal:#0A8F80;--onblue:#fff;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0E1626;--panel:#16213A;--ink:#E8EEF8;--muted:#9AA8C2;--line:#2A3A5C;--blue:#6C93FF;--pink:#F06BAE;--teal:#3CCDB9;--onblue:#0E1626}}
+:root[data-theme="dark"]{--bg:#0E1626;--panel:#16213A;--ink:#E8EEF8;--muted:#9AA8C2;--line:#2A3A5C;--blue:#6C93FF;--pink:#F06BAE;--teal:#3CCDB9;--onblue:#0E1626}
+html{scroll-padding-top:4.5rem;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:66rem;margin:0 auto;padding:0 1.25rem}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:1.1rem;padding-top:.8rem;padding-bottom:.8rem;flex-wrap:wrap}
+.bar b{font:800 1.1rem "Bricolage Grotesque",sans-serif;margin-right:auto}
+.bar a{color:var(--ink);text-decoration:none;font-weight:500}
+.bar a:hover{color:var(--blue)}
+.tg{background:none;border:1px solid var(--line);color:var(--ink);padding:.3rem .7rem;font:inherit;cursor:pointer}
+
+.hero{display:grid;grid-template-columns:1fr;gap:2.5rem;padding:3rem 0 4rem;align-items:center}
+@media(min-width:56rem){.hero{grid-template-columns:1fr 1.15fr}}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.025em}
+.role{font:700 clamp(1.1rem,2.6vw,1.45rem)/1.25 "Bricolage Grotesque",sans-serif;color:var(--blue);margin:1rem 0 0}
+.lede{color:var(--muted);margin:1.2rem 0 0;max-width:33rem}
+.cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem}
+.btn{display:inline-block;padding:.7rem 1.15rem;font:500 1rem "IBM Plex Sans",sans-serif;text-decoration:none;border:2px solid var(--ink);color:var(--ink);background:none;cursor:pointer}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--blue)}
+.avail{margin:1.3rem 0 0;color:var(--teal);font-weight:500}
+
+/* simulated detection feed */
+.feedwrap{min-width:0}
+.feed{position:relative;aspect-ratio:16/10;background:#0B1220;overflow:hidden;border:1px solid var(--line);
+  background-image:linear-gradient(rgba(120,150,200,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,200,.10) 1px,transparent 1px);background-size:12.5% 12.5%}
+.feed::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 3px,rgba(0,0,0,.18) 3px 4px);pointer-events:none}
+.hud{position:absolute;left:.7rem;right:.7rem;top:.6rem;display:flex;justify-content:space-between;font:500 .78rem "IBM Plex Sans",sans-serif;color:#9FB2D4;z-index:2}
+.rec::before{content:"";display:inline-block;width:.55rem;height:.55rem;border-radius:50%;background:#FF4D4D;margin-right:.4rem}
+.det{position:absolute;border:2px solid;transition:all .7s cubic-bezier(.3,.7,.2,1);z-index:1}
+.det i{position:absolute;inset:0;background:radial-gradient(circle at 50% 55%,currentColor,transparent 62%);opacity:.28}
+.det span{position:absolute;left:-2px;top:-1.35rem;color:#0B1220;font:500 .74rem/1 "IBM Plex Sans",sans-serif;padding:.28rem .45rem;white-space:nowrap}
+.cap{margin:.7rem 0 0;font-size:.85rem;color:var(--muted)}
+.log{list-style:none;margin:.6rem 0 0;padding:0;font:500 .85rem/1.7 "IBM Plex Sans",sans-serif;min-height:6.9rem}
+.log li{border-left:3px solid var(--line);padding-left:.7rem}
+.log em{font-style:normal;color:var(--muted);margin-right:.6rem}
+
+section{padding:3.2rem 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:1.8rem}
+.project{background:var(--panel);border-left:6px solid var(--blue);padding:1.7rem;margin-bottom:1.8rem}
+.project.b{border-left-color:var(--pink)}
+.project h3{font-size:1.75rem}
+.sub{color:var(--muted);margin:.4rem 0 1.2rem}
+.flow{list-style:none;margin:0 0 1.3rem;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.6rem}
+.flow li{border:1px solid var(--line);padding:.6rem .8rem;font-size:.95rem;line-height:1.4;counter-increment:s}
+.flow li::before{content:counter(s) ". ";font-weight:700;color:var(--blue)}
+.b .flow li::before{color:var(--pink)}
+.flow{counter-reset:s}
+.project ul.pts{margin:0;padding-left:1.2rem}
+.pts li{margin:.55rem 0;max-width:48rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{border:1px solid var(--line);padding:.2rem .65rem;font-size:.9rem;color:var(--muted)}
+.project .chips{margin-top:1.1rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.8rem 2.2rem}
+.skills h3{font-size:1.15rem;margin-bottom:.6rem}
+.edu .card{background:var(--panel);padding:1.5rem;max-width:44rem}
+.edu h3{font-size:1.3rem}
+.edu p{margin:.5rem 0 0;color:var(--muted)}
+.contact dl{display:grid;grid-template-columns:max-content 1fr;gap:.7rem 1.5rem;margin:0 0 1.4rem}
+.contact dt{color:var(--muted)}
+.contact dd{margin:0;overflow-wrap:anywhere}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <b>GV</b>
+  <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  <button class="tg" id="tg" type="button" aria-label="Switch light or dark theme">Theme</button>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Ganji Venkateswarlu</h1>
+      <p class="role">Machine learning and computer vision engineer</p>
+      <p class="lede">Final-year B.Tech student (AI &amp; ML) who builds vision pipelines alone, from data design to Kubernetes deployment. Looking for an entry-level role in machine learning, MLOps, or AI software development.</p>
+      <div class="cta">
+        <a class="btn main" href="mailto:ganjivenkateswarlu7@gmail.com">Email me</a>
+        <a class="btn" href="https://github.com/venkateswarlu07">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/venkateswarlu-ganji-812204288">LinkedIn</a>
+      </div>
+      <p class="avail">Available now for internships: remote, hybrid, or relocation.</p>
+    </div>
+    <div class="feedwrap">
+      <div class="feed" role="img" aria-label="Simulated camera feed with detection boxes cycling through fire, weapon, crash, and fallen person">
+        <div class="hud"><span class="rec">CAM 01</span><span id="clk">--:--:--</span></div>
+        <div class="det" id="box"><i></i><span id="tag"></span></div>
+      </div>
+      <ul class="log" id="log" aria-live="off"></ul>
+      <p class="cap">Simulated output showing the kind of detections E-Rakshak produces. Not real footage.</p>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <article class="project">
+      <h3>E-Rakshak</h3>
+      <p class="sub">AI-powered autonomous drone emergency response system. Independent project.</p>
+      <ol class="flow">
+        <li>Live camera feed</li>
+        <li>YOLOv8 detects weapons, fires, crashes, fallen people</li>
+        <li>Face recognition and timestamped evidence log</li>
+        <li>UAV dispatch following DGCA guidelines</li>
+      </ol>
+      <ul class="pts">
+        <li>Built the full emergency response pipeline in Python with machine learning, YOLOv8, and OpenCV.</li>
+        <li>Wrote an automated logging module that creates timestamped digital evidence for legal compliance and post-incident review.</li>
+        <li>Owned the whole lifecycle: data pipeline design, model integration, branching strategy, and repository structure on GitHub.</li>
+      </ul>
+      <div class="chips"><span class="chip">Python</span><span class="chip">YOLOv8</span><span class="chip">OpenCV</span><span class="chip">Machine learning</span><span class="chip">Linux</span><span class="chip">Git/GitHub</span></div>
+    </article>
+
+    <article class="project b">
+      <h3>RPRVS</h3>
+      <p class="sub">Real-time pattern recognition and visual surveillance system. Independent project.</p>
+      <ol class="flow">
+        <li>Multiple live video streams</li>
+        <li>Low-latency OpenCV and deep learning inference</li>
+        <li>Behavioral anomaly detection</li>
+        <li>Kubernetes deployment across surveillance nodes</li>
+      </ol>
+      <ul class="pts">
+        <li>Developed a scalable system that analyzes multi-feed video for behavioral anomalies using ML models.</li>
+        <li>Tuned inference pipelines on RHEL and Ubuntu to cut processing time across the detection pipeline.</li>
+        <li>Wrote containerized Kubernetes configs for high availability and efficient resource use, and managed the whole codebase with Git and GitHub.</li>
+      </ul>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Computer vision</span><span class="chip">Kubernetes</span><span class="chip">Linux/RHEL</span><span class="chip">Git/GitHub</span></div>
+    </article>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>AI and machine learning</h3><div class="chips"><span class="chip">ML algorithms</span><span class="chip">Model training</span><span class="chip">Model deployment</span><span class="chip">Data preprocessing</span><span class="chip">Deep learning</span><span class="chip">Computer vision</span><span class="chip">YOLOv8</span><span class="chip">Image processing</span><span class="chip">Video analytics</span></div></div>
+      <div><h3>Languages and libraries</h3><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">Scikit-Learn</span><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">OpenCV</span><span class="chip">TensorFlow</span><span class="chip">PyTorch</span></div></div>
+      <div><h3>Systems and cloud</h3><div class="chips"><span class="chip">RHEL</span><span class="chip">Ubuntu</span><span class="chip">Red Hat OpenShift</span><span class="chip">Kubernetes</span></div></div>
+      <div><h3>DevOps</h3><div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Branching</span><span class="chip">CI/CD workflows</span></div></div>
+    </div>
+  </section>
+
+  <section id="education" class="edu">
+    <h2>Education</h2>
+    <div class="card">
+      <h3>B.Tech, Computer Science &amp; Engineering (AI &amp; ML)</h3>
+      <p>Mohan Babu University, Tirupati. 2023 to 2027, now in final year.</p>
+      <p>Working toward Red Hat Certified System Administrator (RHCSA), and open to OpenShift, AI/ML, and cloud-native certifications.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <dl>
+      <dt>Email</dt><dd><a href="mailto:ganjivenkateswarlu7@gmail.com">ganjivenkateswarlu7@gmail.com</a></dd>
+      <dt>Phone</dt><dd><a href="tel:+918639603557">+91 86396 03557</a></dd>
+      <dt>LinkedIn</dt><dd><a href="https://linkedin.com/in/venkateswarlu-ganji-812204288">linkedin.com/in/venkateswarlu-ganji-812204288</a></dd>
+      <dt>GitHub</dt><dd><a href="https://github.com/venkateswarlu07">github.com/venkateswarlu07</a></dd>
+      <dt>Location</dt><dd>Tirupati, Andhra Pradesh, India</dd>
+    </dl>
+    <button class="btn" id="cp" type="button">Copy email</button>
+  </section>
+  <footer>&copy; 2026 Ganji Venkateswarlu</footer>
+</main>
+
+<script>
+(function(){
+  var scenes=[
+    {l:"fire",c:.88,x:58,y:42,w:22,h:34,k:"#FF8A3D"},
+    {l:"weapon",c:.91,x:18,y:36,w:18,h:24,k:"#F0509A"},
+    {l:"crash",c:.84,x:40,y:52,w:36,h:26,k:"#F2C94C"},
+    {l:"fallen person",c:.89,x:26,y:58,w:32,h:18,k:"#3CCDB9"}
+  ];
+  var box=document.getElementById("box"),tag=document.getElementById("tag"),log=document.getElementById("log"),clk=document.getElementById("clk");
+  var n=0;
+  function t(){return new Date().toTimeString().slice(0,8)}
+  function show(){
+    var s=scenes[n%scenes.length];n++;
+    box.style.left=s.x+"%";box.style.top=s.y+"%";box.style.width=s.w+"%";box.style.height=s.h+"%";
+    box.style.borderColor=s.k;box.style.color=s.k;tag.style.background=s.k;
+    tag.textContent=s.l+" "+s.c.toFixed(2);
+    var li=document.createElement("li");li.style.borderLeftColor=s.k;
+    li.innerHTML="<em>"+t()+"</em>"+s.l+" detected, evidence logged";
+    log.insertBefore(li,log.firstChild);
+    while(log.children.length>4)log.removeChild(log.lastChild);
+  }
+  clk.textContent=t();show();
+  var still=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!still){setInterval(show,3200);setInterval(function(){clk.textContent=t()},1000)}
+  var root=document.documentElement;
+  document.getElementById("tg").addEventListener("click",function(){
+    var dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&window.matchMedia("(prefers-color-scheme: dark)").matches);
+    root.setAttribute("data-theme",dark?"light":"dark");
+  });
+  var cp=document.getElementById("cp");
+  cp.addEventListener("click",function(){
+    try{navigator.clipboard.writeText("ganjivenkateswarlu7@gmail.com").then(function(){cp.textContent="Email copied"},function(){cp.textContent="Copy failed, select the email above"})}
+    catch(e){cp.textContent="Copy failed, select the email above"}
+  });
+})();
+</script>
+</body>
+</html>
